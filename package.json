@@ -1,0 +1,25 @@
+{
+  "name": "tp1",
+  "version": "1.0.0",
+  "description": "\"Desarrollo de servicios web con Node.js - tp1\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blauerwolf/dev-web-srv-nodejs-tp1.git"
+  },
+  "author": "Ernesto Ardenghi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blauerwolf/dev-web-srv-nodejs-tp1/issues"
+  },
+  "homepage": "https://github.com/blauerwolf/dev-web-srv-nodejs-tp1#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
