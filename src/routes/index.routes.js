@@ -9,7 +9,7 @@ const rutas_init = () => {
     router.use('/medicos', medicosRoutes)
     router.use('/tratamientos', tratamientosRoutes)
 
-    return router
+    return router;
 }
 
 module.exports = { rutas_init }
