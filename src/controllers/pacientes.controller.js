@@ -19,6 +19,7 @@ module.exports = {
     },
     crear: async (req, res) => {
         console.log("Crear próximamente...")
+        res.json({ message: 'Alta de pacientes próximamente...'})
 
     }
 }
