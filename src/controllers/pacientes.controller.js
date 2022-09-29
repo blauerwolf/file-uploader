@@ -16,10 +16,24 @@ module.exports = {
             console.log(err)
         }
     },
-    listarInfo: async (req, res) => {
+    listarInfo: async (req, res, next) => {
+        const pacientes = await models.paciente.findOne({
+            where: {
+                id: req.params.idPacientes
+            }
+        })
+
+        if (!pacientes) {
+            return next(errors.PacienteInexistente)
+        }
+
         try {
             res.json({
-                message: 'Listar paciente ' + req.params.idPacientes,
+                success: true,
+                data: {
+                    paciente: pacientes
+                }
+                
             })
         } catch (err) {
             console.log(err)
