@@ -9,6 +9,7 @@ module.exports = {
         }
     },
     listarInfo: async (req, res) => {
+        const tratamientos = await models.tratamiento.findAll()
         try {
             res.json({
                 message: 'Info del tratamiento ' + req.params.idTratamientos,

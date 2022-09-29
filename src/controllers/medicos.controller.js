@@ -1,5 +1,9 @@
+const models = require('../database/models/index')
+const errors = require('../const/errors')
+
 module.exports = {
     listar: async (req, res) => {
+        const medicos = await models.medico.findAll()
         try {
             res.json({
                 message: 'Listado de médicos'
