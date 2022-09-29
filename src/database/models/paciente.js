@@ -12,9 +12,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        apellido: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         dni: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
         },
         obra_social: {
             type: DataTypes.STRING,
@@ -38,11 +45,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, { paranoid: true,
         freezeTableName: true    
-
     })
 
     Paciente.associate = models => {
-        Paciente.hasMany(models.tratamiento)
+        Paciente.hasMany(models.tratamiento),
+        Paciente.belongsTo(models.medico)
     }
 
     return Paciente

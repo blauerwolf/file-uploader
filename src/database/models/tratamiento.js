@@ -33,10 +33,9 @@ module.exports = (sequelize, DataTypes) => {
 
     })
 
-
-    }, { paranoid: true,
-        freezeTableName: true
-    })
+    Tratamiento.associate = models => {
+        
+    }
 
 
     return Tratamiento

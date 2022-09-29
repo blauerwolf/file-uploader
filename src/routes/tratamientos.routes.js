@@ -2,6 +2,8 @@
 
 const router = require('express').Router()
 const tratamientosController = require('../controllers/tratamientos.controller')
+// const validate = require('../middlewares/validate')
+// const tratamientosSchemes = require('../middleware/shemes/tratamientos.scheme')
 
 router.get('/', tratamientosController.listar)
 router.get('/:idTratamientos', tratamientosController.listarInfo)

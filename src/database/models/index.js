@@ -34,6 +34,10 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//sequelize.sync();
+// Actualiza la base de datos cuando se crean tablas.
+// sequelize.sync({force: true}) elimina la db  y la vuelve a crear.
+// sequelize.sync({alter:true}) actualiza la db cuando hay cambios en las tablas (preferir migración)
 sequelize.sync();
 
 module.exports = db;

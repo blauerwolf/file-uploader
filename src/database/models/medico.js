@@ -12,9 +12,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        apellido: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         dni: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
+        especialidad: {
+            type: DataTypes.STRING,
+        },
+        tiempo_trabajando: {
+            type: DataTypes.INTEGER,
         },
         createdAt: {
             type: DataTypes.DATE,
