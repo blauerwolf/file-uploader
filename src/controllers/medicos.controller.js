@@ -3,27 +3,60 @@ const errors = require('../const/errors')
 
 module.exports = {
     listar: async (req, res) => {
-        const medicos = await models.medico.findAll()
-        try {
-            res.json({
-                message: 'Listado de médicos'
+        try{
+            const medicos = await models.medico.findAll({
+                include: [{
+                    model: models.paciente_medico,
+                    include: [{
+                        model: models.paciente
+                    }]
+                }]
             })
-        } catch (err) {
-            console.log(err)
+
+            res.json({
+                sucess: true,
+                data: {
+                    medicos: medicos
+                }
+            })
+
+        } catch(err) {
+            return next(err)
         }
+        
     },
     listarInfo: async (req, res) => {
         try {
-            res.json({
-                message: 'Info del médico: ' + req.params.idMedicos,
+            const medico = await models.medico.findOne({
+                where: {
+                    id: req.params.idMedico
+                }
             })
+
+            res.json({
+                success: true,
+                data: {
+                    medico: medico
+
+                }
+            })
+
         } catch (err) {
-            console.log(err)
+            return next(err)
         }
     },
     crear: async (req, res) => {
-        console.log("Crear médico próximamente...")
-        res.json({ message: 'Alta de médicos próximamente...'})
+        try {
+            const medico = await models.medico.create(req.body)
 
-    }
+            res.json({
+                success: true,
+                data: {
+                    id: medico.id
+                }
+            })
+        } catch (err) {
+            return next(err)
+        }
+    },
 }
