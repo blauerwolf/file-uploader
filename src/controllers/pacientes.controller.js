@@ -9,39 +9,55 @@ module.exports = {
             res.json({
                 success: true,
                 data: {
-                    usuarios: pacientes
+                    pacientes: pacientes
                 }
             })
         } catch (err) {
+            return next(err)
             console.log(err)
         }
     },
     listarInfo: async (req, res, next) => {
-        const pacientes = await models.paciente.findOne({
-            where: {
-                id: req.params.idPacientes
-            }
-        })
-
-        if (!pacientes) {
-            return next(errors.PacienteInexistente)
-        }
-
         try {
+            const pacientes = await models.paciente.findOne({
+                where: {
+                    id: req.params.idPacientes
+                },
+                include: [{
+                    model:models.paciente_medico,
+                    include: [{
+                        model:models.medico
+                    }]
+                }]
+            })
+
             res.json({
                 success: true,
                 data: {
                     paciente: pacientes
                 }
-                
             })
         } catch (err) {
-            console.log(err)
+            return next(err)
         }
     },
-    crear: async (req, res) => {
-        console.log("Crear próximamente...")
-        res.json({ message: 'Alta de pacientes próximamente...'})
+    crear: async (req, res, next) => {
+        try {
+            const paciente = await models.paciente.create(req.body)
+            const relacion = await models.paciente_medico.create({
+                pacienteId: paciente.id,
+                medicoId: req.body.medicoId
+            })
+
+            res.json({
+                success: true,
+                data: {
+                    id: paciente.id
+                }
+            })
+        } catch (err) {
+            return next(err)
+        }
 
     }
 }
