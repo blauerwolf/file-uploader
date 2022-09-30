@@ -6,7 +6,7 @@ La configuración se encuentra en la carpeta postgres_ct
 ```
 docker-compose up -d
 ```
-> Expone el puerto por default de postres (5432)
+> Expone el puerto por default de postres (5432)  
 > Recordar de setear usuario y password en el archivo docker-compose.yaml
 
 ## Inicializando el proyecto
