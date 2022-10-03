@@ -19,9 +19,9 @@ module.exports = {
     },
     listarInfo: async (req, res, next) => {
         try {
-            const pacientes = await models.paciente.findOne({
+            const paciente = await models.paciente.findOne({
                 where: {
-                    id: req.params.idPacientes
+                    id: req.params.idPaciente
                 },
                 include: [{
                     model:models.paciente_medico,
@@ -34,7 +34,7 @@ module.exports = {
             res.json({
                 success: true,
                 data: {
-                    paciente: pacientes
+                    paciente: paciente
                 }
             })
         } catch (err) {

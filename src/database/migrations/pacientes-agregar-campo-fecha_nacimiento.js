@@ -1,10 +1,11 @@
 'use strict';
 
+/*
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return Promise.all([
-            queryInterface.addColumn('pacientes', 'nacimiento'), {
-                type: Sequelize.DATE
+            queryInterface.addColumn('paciente', 'nacimiento'), {
+                type: Sequelize.DATE,
                 allowNull: false,
             }
         ]);
@@ -13,3 +14,4 @@ module.exports = {
     down: (queryInterface, Sequelize) => {
     }
 }
+*/

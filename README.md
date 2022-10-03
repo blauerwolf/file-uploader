@@ -1,5 +1,5 @@
 # Desarrollo de servicios web con Nodejs
-TP2
+Trabajo Final Integrador
 
 # Contenedor de postgres:
 La configuración se encuentra en la carpeta postgres_ct

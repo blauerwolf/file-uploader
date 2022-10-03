@@ -25,7 +25,7 @@ module.exports = {
         }
         
     },
-    listarInfo: async (req, res) => {
+    listarInfo: async (req, res, next) => {
         try {
             const medico = await models.medico.findOne({
                 where: {
@@ -33,11 +33,12 @@ module.exports = {
                 }
             })
 
+            if (!medico) return next(errors.MedicoInexistente)
+
             res.json({
                 success: true,
                 data: {
                     medico: medico
-
                 }
             })
 

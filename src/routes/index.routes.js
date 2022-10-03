@@ -1,14 +1,14 @@
 const { Router } = require('express')
 
-const pacientesRoutes = require('./pacientes.routes')
-const medicosRoutes = require('./medicos.routes')
-const tratamientosRoutes = require('./tratamientos.routes')
+const pacienteRoutes = require('./paciente.routes')
+const medicoRoutes = require('./medico.routes')
+const tratamientoRoutes = require('./tratamiento.routes')
 
 const rutas_init = () => {
     const router = Router()
-    router.use('/pacientes', pacientesRoutes)
-    router.use('/medicos', medicosRoutes)
-    router.use('/tratamientos', tratamientosRoutes)
+    router.use('/pacientes', pacienteRoutes)
+    router.use('/medicos', medicoRoutes)
+    router.use('/tratamientos', tratamientoRoutes)
 
     return router
 }

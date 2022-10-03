@@ -3,6 +3,7 @@ const express = require('express')
 const globalConstants = require('./const/globalConstants')
 const routerConfig = require('./routes/index.routes')
 
+let errorHandler = require('./middlewares/error')
 let createError = require('http-errors') 
 
 const configuracionApi = (app) => {
@@ -16,6 +17,8 @@ const configuracionRouter = (app) => {
     app.use(function (req, res, next){
         next(createError(404, 'No encontrado'))
     })
+
+    app.use(errorHandler)
 }
 
 const init = () => {
