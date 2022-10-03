@@ -2,7 +2,7 @@ const models = require('../database/models/index')
 const errors = require('../const/errors')
 
 module.exports = {
-    listar: async (req, res) => {
+    listar: async (req, res, next) => {
         try{
             const medicos = await models.medico.findAll({
                 include: [{
@@ -12,6 +12,9 @@ module.exports = {
                     }]
                 }]
             })
+
+
+            if (medicos.length == 0) return next(errors.SinResultadosError)
 
             res.json({
                 sucess: true,
@@ -46,7 +49,7 @@ module.exports = {
             return next(err)
         }
     },
-    crear: async (req, res) => {
+    crear: async (req, res, next) => {
         try {
             const medico = await models.medico.create(req.body)
 
@@ -56,6 +59,7 @@ module.exports = {
                     id: medico.id
                 }
             })
+
         } catch (err) {
             return next(err)
         }

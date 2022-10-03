@@ -9,6 +9,11 @@ module.exports = {
         message: 'Faltan parámetros necesarios.',
         response: 400
     },
+    'SinResultadosError': {
+        code: 1002,
+        message: 'La consulta no tiene resultados.',
+        response: 404
+    },
     'PacienteInexistente': {
         code: 2000,
         message: 'Paciente inexistente.',

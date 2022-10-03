@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         paranoid: true,
         freezeTableName: true,
     })
+    
     Paciente_Medico.associate = models => {
         Paciente_Medico.belongsTo(models.paciente)
         Paciente_Medico.belongsTo(models.medico)

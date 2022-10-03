@@ -1,3 +1,6 @@
+const models = require('../database/models/index')
+const errors = require('../const/errors')
+
 module.exports = {
     listar: async (req, res) => {
         try {

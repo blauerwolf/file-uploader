@@ -31,6 +31,8 @@ module.exports = {
                 }]
             })
 
+            if (!paciente) return next(errors.PacienteInexistente)
+
             res.json({
                 success: true,
                 data: {
@@ -49,7 +51,7 @@ module.exports = {
                 medicoId: req.body.medicoId
             })
 
-            res.json({
+            res.status(201).json({
                 success: true,
                 data: {
                     id: paciente.id
