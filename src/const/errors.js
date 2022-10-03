@@ -21,7 +21,7 @@ module.exports = {
     },
     'MedicoInexistente': {
         code: 3000,
-        message: 'Médico no encontrado',
+        message: 'Médico no encontrado.',
         response: 404
     }
 }

@@ -46,6 +46,14 @@ module.exports = {
     crear: async (req, res, next) => {
         try {
             const paciente = await models.paciente.create(req.body)
+            const medico = await models.medico.findOne({
+                where: {
+                    id: req.body.medicoId
+                }
+            })
+
+            if (!medico) return next(errors.MedicoInexistente)
+
             const relacion = await models.paciente_medico.create({
                 pacienteId: paciente.id,
                 medicoId: req.body.medicoId
