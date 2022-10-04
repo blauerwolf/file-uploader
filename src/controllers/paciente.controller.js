@@ -16,7 +16,6 @@ module.exports = {
             })
         } catch (err) {
             return next(err)
-            console.log(err)
         }
     },
     listarInfo: async (req, res, next) => {
@@ -88,6 +87,7 @@ module.exports = {
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 email: req.body.email,
+                nacimiento: req.body.nacimiento,
                 especialidad: req.body.especialidad,
                 obra_social: req.body.obra_social,
             }, {

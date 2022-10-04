@@ -6,6 +6,7 @@ let crearPaciente = Joi.object({
     medicoId: Joi.number().required(),
     dni: Joi.number().required(),
     email: Joi.string().email().optional(),
+    nacimiento: Joi.date().required(),
 })
 
 let actualizarPaciente = Joi.object({
@@ -13,7 +14,7 @@ let actualizarPaciente = Joi.object({
     apellido: Joi.string().optional(),
     email: Joi.string().optional(),
     obra_social: Joi.string().optional(),
-
+    nacimiento: Joi.date().optional(),
 })
 
 module.exports = {
