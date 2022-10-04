@@ -1,7 +1,7 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
 const medico = require('../database/models/paciente')
-const { NOW, fn } = require('sequelize')
+const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {
     listar: async (req, res) => {
@@ -50,7 +50,10 @@ module.exports = {
             const paciente = await models.paciente.create(req.body)
             const medico = await models.medico.findOne({
                 where: {
-                    id: req.body.medicoId
+                    [Op.and]: [
+                        { id: req.body.medicoId },
+                        { deletedAt: null}
+                    ]
                 }
             })
 
@@ -99,7 +102,8 @@ module.exports = {
             res.json({
                 success: true,
                 data: {
-                    id: req.params.idPaciente
+                    id: req.params.idPaciente,
+                    updatedAt: paciente[1].dataValues.updatedAt
                 }
             })
 

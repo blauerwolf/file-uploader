@@ -13,5 +13,6 @@ docker-compose up -d
 ```
 npm install
 npm run db:create
+rpm run db:seed
 npm start
 ```
