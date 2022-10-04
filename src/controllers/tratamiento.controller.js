@@ -1,14 +1,23 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
+const medico = require('../database/models/tratamiento')
+const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {
-    listar: async (req, res) => {
+    listar: async (req, res, next) => {
         try {
+            const tratamientos = await models.tratamiento.findAll()
+
+            if (tratamientos.length == 0) return next(errors.SinResultadosError)
+
             res.json({
-                message: 'Listado de tratamientos'
+                success: true,
+                data: {
+                    tratamientos: tratamientos
+                }
             })
         } catch (err) {
-            console.log(err)
+            return next(err)
         }
     },
     listarInfo: async (req, res) => {
