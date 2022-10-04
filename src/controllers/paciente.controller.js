@@ -68,6 +68,41 @@ module.exports = {
         } catch (err) {
             return next(err)
         }
+    },
+    actualizar: async (req, res, next) => {
+        try {
+            const existe = await models.paciente.findOne({
+                where: {
+                    id: req.params.idPaciente
+                }
+            })
 
-    }
+            if (!existe) return next(errors.PacienteInexistente)
+
+            const paciente = await models.paciente.update({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                email: req.body.email,
+                especialidad: req.body.especialidad,
+                obra_social: req.body.obra_social,
+            }, {
+                where: { id: req.params.idPaciente },
+                returning: true,
+                plain: true,
+
+            }).then (function(result) {
+                console.log(result[1].dataValues)
+            })
+
+            res.json({
+                success: true,
+                data: {
+                    id: req.params.idPaciente
+                }
+            })
+
+        } catch (err) {
+            return next(err)
+        }
+    },
 }

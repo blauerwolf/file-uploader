@@ -23,5 +23,15 @@ module.exports = {
         code: 3000,
         message: 'Médico no encontrado.',
         response: 404
-    }
+    },
+    'MedicoAlreadyExistsError': {
+        code: 3001,
+        message: 'El/la médico ya se encuentra registrado',
+        response: 409
+    },
+    'MedicoConPacienteError': {
+        code: 3002,
+        message: "El/la médico tiene pacientes en atención. Deberá asignarlos a otro profesional antes de borrar el registro.",
+        response: 409
+    },
 }

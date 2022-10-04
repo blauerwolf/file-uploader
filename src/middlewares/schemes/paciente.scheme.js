@@ -8,6 +8,15 @@ let crearPaciente = Joi.object({
     email: Joi.string().email().optional(),
 })
 
+let actualizarPaciente = Joi.object({
+    nombre: Joi.string().optional(),
+    apellido: Joi.string().optional(),
+    email: Joi.string().optional(),
+    obra_social: Joi.string().optional(),
+
+})
+
 module.exports = {
-    crearPaciente
+    crearPaciente,
+    actualizarPaciente,
 }

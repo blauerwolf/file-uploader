@@ -11,6 +11,7 @@ docker-compose up -d
 
 ## Inicializando el proyecto
 ```
+npm install
 npm run db:create
 npm start
 ```
