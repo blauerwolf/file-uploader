@@ -125,7 +125,6 @@ module.exports = {
 
             if (!existe) return next(errors.UsuarioInexistente)
 
-            // CONTROLAR RELACIONES ANTES DE BORRAR
 
             const usuario = await models.usuario.update({
                 deletedAt: fn('NOW')
@@ -133,7 +132,6 @@ module.exports = {
                 where: { id: req.params.idUsuario },
                 returning: true,
                 plain: true,
-
             })
 
             console.log(usuario[1].dataValues)
