@@ -15,7 +15,6 @@ module.exports = {
                 }]
             })
 
-
             if (medicos.length == 0) return next(errors.SinResultadosError)
 
             res.json({
@@ -27,8 +26,7 @@ module.exports = {
 
         } catch(err) {
             return next(err)
-        }
-        
+        }    
     },
     listarInfo: async (req, res, next) => {
         try {
@@ -64,7 +62,6 @@ module.exports = {
             }
 
             const medico = await models.medico.create(req.body)
-
 
             res.status(201).json({
                 success: true,
@@ -123,7 +120,6 @@ module.exports = {
                 }],
                 where: { id: req.params.idMedico }
             })
-
 
             if (!existe) return next(errors.MedicoInexistente)
 
