@@ -1,7 +1,7 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
 const usuario = require('../database/models/usuario')
-const { NOW, fn } = require('sequelize')
+const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {
     listar: async (req, res, next) => {
@@ -53,7 +53,10 @@ module.exports = {
         try {
             const existe =  await models.usuario.findOne({
                 where: {
-                    email: req.body.email
+                    [Op.and]: [
+                        { email: req.body.email },
+                        { deletedAt: null}
+                    ]
                 }
             })
 
@@ -109,7 +112,8 @@ module.exports = {
             res.json({
                 success: true,
                 data: {
-                    id: req.params.idUsuario
+                    id: req.params.idUsuario,
+                    updatedAt: usuario[1].dataValues.updatedAt
                 }
             })
 
@@ -124,7 +128,6 @@ module.exports = {
             })
 
             if (!existe) return next(errors.UsuarioInexistente)
-
 
             const usuario = await models.usuario.update({
                 deletedAt: fn('NOW')
