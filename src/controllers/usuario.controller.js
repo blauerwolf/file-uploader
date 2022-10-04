@@ -1,26 +1,23 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
-const medico = require('../database/models/medico')
+const usuario = require('../database/models/usuario')
 const { NOW, fn } = require('sequelize')
 
 module.exports = {
     listar: async (req, res, next) => {
         try{
-            const medicos = await models.medico.findAll({
+            const usuarios = await models.usuario.findAll({
                 include: [{
-                    model: models.paciente_medico,
-                    include: [{
-                        model: models.paciente
-                    }]
+                    model: models.perfil,
                 }]
             })
 
-            if (medicos.length == 0) return next(errors.SinResultadosError)
+            if (usuarios.length == 0) return next(errors.SinResultadosError)
 
             res.json({
                 sucess: true,
                 data: {
-                    medicos: medicos
+                    usuarios: usuarios
                 }
             })
 
@@ -30,18 +27,21 @@ module.exports = {
     },
     listarInfo: async (req, res, next) => {
         try {
-            const medico = await models.medico.findOne({
+            const usuario = await models.usuario.findOne({
+                include: [{
+                    model:models.perfil
+                }],
                 where: {
-                    id: req.params.idMedico
+                    id: req.params.idUsuario
                 }
             })
 
-            if (!medico) return next(errors.MedicoInexistente)
+            if (!usuario) return next(errors.UsuarioInexistente)
 
             res.json({
                 success: true,
                 data: {
-                    medico: medico
+                    usuario: usuario
                 }
             })
 
@@ -51,22 +51,30 @@ module.exports = {
     },
     crear: async (req, res, next) => {
         try {
-            const existe =  await models.medico.findOne({
+            const existe =  await models.usuario.findOne({
                 where: {
-                    dni: req.body.dni
+                    email: req.body.email
                 }
             })
 
             if (existe) {
-                return next(errors.MedicoAlreadyExistsError)
+                return next(errors.UsuarioAlreadyExistsError)
             }
 
-            const medico = await models.medico.create(req.body)
+            const perfil = await models.perfil.findOne({
+                where: {
+                    id: req.body.perfilId
+                }
+            })
+
+            if (!perfil) return next(errors.PerfilNotFoundError)
+
+            const usuario = await models.usuario.create(req.body)
 
             res.status(201).json({
                 success: true,
                 data: {
-                    id: medico.id
+                    id: usuario.id
                 }
             })
 
@@ -76,32 +84,32 @@ module.exports = {
     },
     actualizar: async (req, res, next) => {
         try {
-            const existe = await models.medico.findOne({
+            const existe = await models.usuario.findOne({
                 where: {
-                    id: req.params.idMedico
+                    id: req.params.idUsuario
                 }
             })
 
-            if (!existe) return next(errors.MedicoInexistente)
+            if (!existe) return next(errors.UsuarioInexistente)
 
-            const medico = await models.medico.update({
+            const usuario = await models.usuario.update({
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 email: req.body.email,
-                especialidad: req.body.especialidad,
+                perfilId: req.body.perfilId,
             }, {
-                where: { id: req.params.idMedico },
+                where: { id: req.params.idUsuario },
                 returning: true,
                 plain: true,
 
             })
 
-            console.log(medico[1].dataValues)
+            console.log(usuario[1].dataValues)
 
             res.json({
                 success: true,
                 data: {
-                    id: req.params.idMedico
+                    id: req.params.idUsuario
                 }
             })
 
@@ -111,38 +119,30 @@ module.exports = {
     },
     borrar: async (req, res, next) => {
         try {
-            const existe = await models.medico.findOne({
-                include: [{
-                    model: models.paciente_medico,
-                    include: [{
-                        model: models.paciente
-                    }]
-                }],
-                where: { id: req.params.idMedico }
+            const existe = await models.usuario.findOne({
+                where: { id: req.params.idUsuario }
             })
 
-            if (!existe) return next(errors.MedicoInexistente)
+            if (!existe) return next(errors.UsuarioInexistente)
 
-            if (existe.paciente_medicos.length > 0) {
-                return next(errors.MedicoConPacienteError)
-            }
+            // CONTROLAR RELACIONES ANTES DE BORRAR
 
-            const medico = await models.medico.update({
+            const usuario = await models.usuario.update({
                 deletedAt: fn('NOW')
             }, {
-                where: { id: req.params.idMedico },
+                where: { id: req.params.idUsuario },
                 returning: true,
                 plain: true,
 
             })
 
-            console.log(medico[1].dataValues)
+            console.log(usuario[1].dataValues)
 
             res.json({
                 success: true,
                 data: {
-                    id: req.params.idMedico,
-                    deletedAt:medico[1].dataValues.deletedAt
+                    id: req.params.idUsuario,
+                    deletedAt: usuario[1].dataValues.deletedAt
                 }
             })
             

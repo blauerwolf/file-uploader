@@ -34,4 +34,19 @@ module.exports = {
         message: "El/la médico tiene pacientes en atención. Deberá asignarlos a otro profesional antes de borrar el registro.",
         response: 409
     },
+    'UsuarioInexistente': {
+        code: 4000,
+        message: 'Usuario no encontrado.',
+        response: 404
+    },
+    'UsuarioAlreadyExistsError': {
+        code: 4001,
+        message: 'Ya se encuentra registrado el email.',
+        response: 409
+    },
+    'PerfilNotFoundError': {
+        code: 5000,
+        message: 'No existe el perfil solicitado.',
+        response: 409
+    }
 }

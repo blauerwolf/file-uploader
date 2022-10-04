@@ -129,7 +129,8 @@ module.exports = {
             res.json({
                 success: true,
                 data: {
-                    id: req.params.idPaciente
+                    id: req.params.idPaciente,
+                    deletedAt: paciente[1].dataValues.deletedAt
                 }
             })
             
