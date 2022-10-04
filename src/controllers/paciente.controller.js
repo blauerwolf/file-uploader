@@ -1,5 +1,7 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
+const medico = require('../database/models/paciente')
+const { NOW, fn } = require('sequelize')
 
 module.exports = {
     listar: async (req, res) => {
@@ -105,4 +107,35 @@ module.exports = {
             return next(err)
         }
     },
+
+    borrar: async (req, res, next) => {
+        try {
+            const existe = await models.paciente.findOne({
+                where: { id: req.params.idPaciente }
+            })
+
+            if (!existe) return next(errors.PacienteInexistente)
+
+            const paciente = await models.paciente.update({
+                deletedAt: fn('NOW')
+            }, {
+                where: { id: req.params.idPaciente },
+                returning: true,
+                plain: true,
+
+            })
+
+            console.log(paciente[1].dataValues)
+
+            res.json({
+                success: true,
+                data: {
+                    id: req.params.idPaciente
+                }
+            })
+            
+        } catch (err) {
+            return next(err)
+        }
+    } 
 }

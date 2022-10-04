@@ -131,8 +131,6 @@ module.exports = {
                 return next(errors.MedicoConPacienteError)
             }
 
-
-
             const medico = await models.medico.update({
                 deletedAt: fn('NOW')
             }, {
