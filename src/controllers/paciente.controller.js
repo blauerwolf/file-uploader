@@ -107,7 +107,6 @@ module.exports = {
             return next(err)
         }
     },
-
     borrar: async (req, res, next) => {
         try {
             const existe = await models.paciente.findOne({
