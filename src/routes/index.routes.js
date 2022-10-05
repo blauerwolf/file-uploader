@@ -12,8 +12,8 @@ const rutas_init = () => {
     router.use('/pacientes', pacienteRoutes)
     router.use('/medicos', medicoRoutes)
     router.use('/tratamientos', tratamientoRoutes)
-    router.use('/usuarios', usuarioRoutes)
-    //router.use('/usuarios', decodeJWT, usuarioRoutes)
+    //router.use('/usuarios', usuarioRoutes)
+    router.use('/usuarios', decodeJWT, usuarioRoutes)
 
 
     return router

@@ -1,8 +1,7 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
-const usuario = require('../database/models/usuario')
-const { NOW, fn, Op } = require('sequelize')
 const bcrypt = require('bcryptjs')
+
 const signJWT = require('../middlewares/signJWT')
 
 module.exports = {
