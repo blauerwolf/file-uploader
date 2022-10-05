@@ -20,7 +20,7 @@ module.exports = {
             return next(err)
         }
     },
-    listarInfo: async (req, res) => {
+    listarInfo: async (req, res, next) => {
         const tratamientos = await models.tratamiento.findAll()
         try {
             res.json({
@@ -35,7 +35,7 @@ module.exports = {
         res.json({ message: 'Crear tratamiento próximamente...' })
 
     },
-    modificar: async (req, res) => {
+    modificar: async (req, res, next) => {
 
         if (typeof req.body.nombre == 'undefined')
           return res.status(400).send({ message: "Falta el atributo 'nombre' del tratamiento" })

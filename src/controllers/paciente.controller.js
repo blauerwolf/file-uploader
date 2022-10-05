@@ -4,7 +4,7 @@ const medico = require('../database/models/paciente')
 const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {
-    listar: async (req, res) => {
+    listar: async (req, res, next) => {
         try {
             const pacientes = await models.paciente.findAll()
 
@@ -95,9 +95,9 @@ module.exports = {
                 returning: true,
                 plain: true,
 
-            }).then (function(result) {
-                console.log(result[1].dataValues)
             })
+
+            console.log(paciente[1].dataValues)
 
             res.json({
                 success: true,
