@@ -73,6 +73,8 @@ module.exports = {
             if (!perfil) return next(errors.PerfilNotFoundError)
 
             const usuario = await models.usuario.create(req.body)
+            usuario.password = usuario.cryptPassword(usuario.password)
+            await usuario.save()
 
             res.status(201).json({
                 success: true,

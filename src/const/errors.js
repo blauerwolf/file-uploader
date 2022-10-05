@@ -54,4 +54,19 @@ module.exports = {
         message: 'Tratamiento no encontrado.',
         response: 404
     },
+    'CredencialesInvalidas': {
+        code: 7000,
+        message: 'Usuario o contraseña no válidos',
+        response: 400
+    },
+    'UsuarioNoAutorizado': {
+        code: 7001,
+        message: 'Usuario no autorizado',
+        response: 403
+    },
+    'SesionExpirada': {
+        code: 7002,
+        message: 'Sesión expirada',
+        response: 403
+    },
 }
