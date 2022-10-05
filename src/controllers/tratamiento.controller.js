@@ -56,7 +56,7 @@ module.exports = {
             return next(err)
         }
     },
-    crear: async (req, res) => {
+    crear: async (req, res, next) => {
         try {
             const paciente = await models.paciente.findOne({
                 where: {

@@ -61,7 +61,7 @@ module.exports = {
     },
     'UsuarioNoAutorizado': {
         code: 7001,
-        message: 'Usuario no autorizado',
+        message: 'Usuario no autorizado.',
         response: 403
     },
     'SesionExpirada': {
