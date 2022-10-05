@@ -72,7 +72,8 @@ module.exports = {
             res.status(201).json({
                 success: true,
                 data: {
-                    id: paciente.id
+                    id: paciente.id,
+                    createdAt: paciente.createdAt
                 }
             })
         } catch (err) {

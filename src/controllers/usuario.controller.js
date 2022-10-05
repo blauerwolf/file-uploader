@@ -77,7 +77,8 @@ module.exports = {
             res.status(201).json({
                 success: true,
                 data: {
-                    id: usuario.id
+                    id: usuario.id,
+                    createdAt: usuario.createdAt
                 }
             })
 

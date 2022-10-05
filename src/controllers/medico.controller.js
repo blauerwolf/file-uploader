@@ -69,7 +69,8 @@ module.exports = {
             res.status(201).json({
                 success: true,
                 data: {
-                    id: medico.id
+                    id: medico.id,
+                    createdAt: medico.createdAt
                 }
             })
 

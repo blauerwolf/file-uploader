@@ -78,15 +78,14 @@ module.exports = {
             res.status(201).json({
                 success: true,
                 data: {
-                    id: paciente.id
+                    id: tratamiento.id,
+                    idPaciente: paciente.id,
+                    createdAt: tratamiento.createdAt
                 }
             })
         } catch (err) {
             return next(err)
         }
-        console.log("Crear tratamiento próximamente...")
-        res.json({ message: 'Crear tratamiento próximamente...' })
-
     },
     actualizar: async (req, res, next) => {
 
