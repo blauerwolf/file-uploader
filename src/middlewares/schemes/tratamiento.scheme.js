@@ -5,9 +5,10 @@ let crearTratamiento = Joi.object({
     pacienteId: Joi.number().required(),
 })
 
+// Pido un mínimo de 1 campo a actualizar
 let actualizarTratamiento = Joi.object({
     descripcion: Joi.string().optional(),
-})
+}).min(1)
 
 module.exports = {
     crearTratamiento,
