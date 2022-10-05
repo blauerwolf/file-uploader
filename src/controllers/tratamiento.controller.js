@@ -6,7 +6,15 @@ const { NOW, fn, Op } = require('sequelize')
 module.exports = {
     listar: async (req, res, next) => {
         try {
-            const tratamientos = await models.tratamiento.findAll()
+            const tratamientos = await models.tratamiento.findAll({
+                include: [{
+                    model: models.paciente_tratamiento,
+                    include: [{
+                        model: models.paciente,
+                        model: models.tratamiento,
+                    }]
+                }]
+            })
 
             if (tratamientos.length == 0) return next(errors.SinResultadosError)
 
@@ -21,21 +29,66 @@ module.exports = {
         }
     },
     listarInfo: async (req, res, next) => {
-        const tratamientos = await models.tratamiento.findAll()
         try {
-            res.json({
-                message: 'Info del tratamiento ' + req.params.idTratamientos,
+            const tratamiento = await models.tratamiento.findOne({
+                include: [{
+                    model:models.paciente_tratamiento,
+                    include: [{
+                        model: models.paciente,
+                        model: models.tratamiento
+                    }]
+                }],
+                where: {
+                    id: req.params.idTratamiento
+                }
             })
+
+            if (!tratamiento) return next(errors.TratamientoInexistente)
+
+            res.json({
+                success: true,
+                data: {
+                    tratamiento: tratamiento
+                }
+            })
+
         } catch (err) {
-            console.log(err)
+            return next(err)
         }
     },
     crear: async (req, res) => {
+        try {
+            const paciente = await models.paciente.findOne({
+                where: {
+                    [Op.and]: [
+                        { id: req.body.pacienteId },
+                        { deletedAt: null}
+                    ]
+                }
+            })
+
+            if (!paciente) return next(errors.PacienteInexistente)
+
+            const tratamiento = await models.tratamiento.create(req.body)
+            const relacion = await models.paciente_tratamiento.create({
+                pacienteId: paciente.id,
+                tratamientoId: tratamiento.id
+            })
+
+            res.status(201).json({
+                success: true,
+                data: {
+                    id: paciente.id
+                }
+            })
+        } catch (err) {
+            return next(err)
+        }
         console.log("Crear tratamiento próximamente...")
         res.json({ message: 'Crear tratamiento próximamente...' })
 
     },
-    modificar: async (req, res, next) => {
+    actualizar: async (req, res, next) => {
 
         if (typeof req.body.nombre == 'undefined')
           return res.status(400).send({ message: "Falta el atributo 'nombre' del tratamiento" })

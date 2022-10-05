@@ -1,16 +1,12 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-    let Tratamiento = sequelize.define('tratamiento', {
+    let Paciente_Tratamiento = sequelize.define('paciente_tratamiento', {
         id: {
             type: DataTypes.BIGINT,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
-        },
-        descripcion: {
-            type: DataTypes.TEXT,
-            allowNull: false,
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -26,17 +22,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         deletedAt: {
             type: DataTypes.DATE,
-            field: 'deleted_at'
+            field: 'deleted_at',
         }
-    }, { paranoid: true,
-        freezeTableName: true    
-
+    }, {
+        paranoid: true,
+        freezeTableName: true,
     })
-
-    Tratamiento.associate = models => {
-        Tratamiento.hasMany(models.paciente_tratamiento)
+    
+    Paciente_Tratamiento.associate = models => {
+        Paciente_Tratamiento.belongsTo(models.paciente)
+        Paciente_Tratamiento.belongsTo(models.tratamiento)
     }
 
-
-    return Tratamiento
+    return Paciente_Tratamiento
 }

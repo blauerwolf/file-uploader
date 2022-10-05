@@ -48,5 +48,10 @@ module.exports = {
         code: 5000,
         message: 'No existe el perfil solicitado.',
         response: 409
-    }
+    },
+    'TratamientoInexistente': {
+        code: 6000,
+        message: 'Tratamiento no encontrado.',
+        response: 404
+    },
 }

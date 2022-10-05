@@ -25,11 +25,17 @@ module.exports = {
                     id: req.params.idPaciente
                 },
                 include: [{
-                    model:models.paciente_medico,
+                    model: models.paciente_medico,
                     include: [{
-                        model:models.medico
-                    }]
-                }]
+                        model: models.medico
+                    }],
+                }],
+                include: [{
+                    model: models.paciente_tratamiento,
+                    include: [{
+                        model: models.tratamiento
+                    }],
+                }],
             })
 
             if (!paciente) return next(errors.PacienteInexistente)
