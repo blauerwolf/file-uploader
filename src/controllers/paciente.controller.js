@@ -1,6 +1,5 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
-const medico = require('../database/models/paciente')
 const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {

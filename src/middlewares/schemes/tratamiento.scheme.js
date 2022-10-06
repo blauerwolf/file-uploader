@@ -7,8 +7,8 @@ let crearTratamiento = Joi.object({
 
 // Pido un mínimo de 1 campo a actualizar
 let actualizarTratamiento = Joi.object({
-    descripcion: Joi.string().optional(),
-}).min(1)
+    descripcion: Joi.string().required(),
+})
 
 module.exports = {
     crearTratamiento,

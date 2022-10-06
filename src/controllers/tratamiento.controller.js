@@ -1,6 +1,5 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
-const medico = require('../database/models/tratamiento')
 const { NOW, fn, Op } = require('sequelize')
 
 module.exports = {
@@ -88,14 +87,69 @@ module.exports = {
         }
     },
     actualizar: async (req, res, next) => {
+        try {
 
-        if (typeof req.body.nombre == 'undefined')
-          return res.status(400).send({ message: "Falta el atributo 'nombre' del tratamiento" })
-        if (typeof req.body.descripcion == 'undefined')
-          return res.status(400).send({ message: "Falta el atributo 'descripcion' del tratamiento"})
+            const existe = await models.tratamiento.findOne({
+                where: {
+                    id: req.params.idTratamiento
+                }
+            })
 
-        nombre = req.body.nombre 
-        descripcion = req.body.descripcion
-        return res.json({ message: nombre, descripcion: descripcion })
-    }
+            if (!existe) return next(errors.TratamientoInexistente)
+
+            const tratamiento = await models.tratamiento.update({
+                descripcion: req.body.descripcion,
+            }, {
+                where: { id: req.params.idTratamiento },
+                returning: true,
+                plain: true, 
+            })
+
+            console.log(tratamiento[1].dataValues)
+
+            res.json({
+                success: true,
+                data: {
+                    id: req.params.idTratamiento,
+                    updatedAt: tratamiento[1].dataValues.updatedAt
+                }
+            })
+
+
+
+        } catch (err) {
+            return next(err)
+        }
+    },
+    borrar: async (req, res, next) => {
+        try {
+            const existe = await models.tratamiento.findOne({
+                where: { id: req.params.idTratamiento }
+            })
+
+            if (!existe) return next(errors.TratamientoInexistente)
+
+            const tratamiento = await models.tratamiento.update({
+                deletedAt: fn('NOW')
+            }, {
+                where: { id: req.params.idTratamiento },
+                returning: true,
+                plain: true,
+
+            })
+
+            console.log(tratamiento[1].dataValues)
+
+            res.json({
+                success: true,
+                data: {
+                    id: req.params.idTratamiento,
+                    deletedAt: tratamiento[1].dataValues.deletedAt
+                }
+            })
+            
+        } catch (err) {
+            return next(err)
+        }
+    } 
 }

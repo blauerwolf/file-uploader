@@ -5,7 +5,10 @@ module.exports = function (usuario) {
     
     if (usuario) {
         const token = jwt.sign({
-            id: usuario.id
+            id: usuario.id,
+            perfilId: usuario.perfilId,
+            nombre: usuario.nombre,
+            apellido: usuario.apellido
         },
             globalConstants.JWT_SECRET, 
             {
