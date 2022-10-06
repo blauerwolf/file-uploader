@@ -17,10 +17,6 @@ module.exports = {
 
             var passwordCoincide = false
 
-            console.log("USUARIO.PASS")
-            console.log(user.password)
-            console.log(user)
-
             if (user) {
                 passwordCoincide = bcrypt.compareSync(req.body.password, user.password)
             }
