@@ -69,4 +69,9 @@ module.exports = {
         message: 'Sesión expirada',
         response: 403
     },
+    'NoAutorizado': {
+        code: 7003,
+        message: 'No autorizado.',
+        response: 403
+    },
 }
