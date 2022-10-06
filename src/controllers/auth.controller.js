@@ -32,7 +32,8 @@ module.exports = {
                     id: user.id,
                     nombre: user.nombre,
                     apellido: user.apellido,
-                    email: user.email
+                    email: user.email,
+                    perfilId: user.perfilId,
                 }
             })
         } catch (err) {
