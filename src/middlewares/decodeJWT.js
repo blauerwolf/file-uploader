@@ -7,8 +7,12 @@ const globalConstants = require('../const/globalConstants')
 module.exports = async function (req, res, next) {
     if (req.header('Authorization') && req.header('Authorization').split(' ').length > 1) {
         try {
+
+            let dataToken = jwt.verify(req.header('Authorization').split(' ')[1], globalConstants.JWT_SECRET)
+
+
             if (dataToken.exp <= moment().unix()) {
-                return next(errors.SessionExpirada)
+                return next(errors.SesionExpirada)
             }
 
             res.locals.token = dataToken
@@ -26,7 +30,7 @@ module.exports = async function (req, res, next) {
             next()
 
         } catch (err) {
-            return next(errors.SessionExpirada)
+            return next(errors.SesionExpirada)
         }
     } else {
         return next(errors.UsuarioNoAutorizado)

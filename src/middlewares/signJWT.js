@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const globalConstants = require('../const/globalConstants')
 
 module.exports = function (usuario) {
+    
     if (usuario) {
         const token = jwt.sign({
             id: usuario.id
