@@ -5,7 +5,7 @@ let crearUsuario = Joi.object({
     apellido: Joi.string().required(),
     email: Joi.string().email().required(),
     perfilId: Joi.number().required(),
-    password: Joi.string().required(),
+    password: Joi.string().required().default(null),
 })
 
 // Pido un mínimo de 1 campo a actualizar

@@ -1,6 +1,7 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
 const bcrypt = require('bcryptjs')
+const { NOW, fn, Op } = require('sequelize')
 
 const signJWT = require('../middlewares/signJWT')
 
@@ -43,6 +44,20 @@ module.exports = {
     registrarse: async (req, res, next) => {
         try {
             req.body.password = bcrypt.hashSync(req.body.password, 10)
+            req.body.perfilId = null
+
+            const existe =  await models.usuario.findOne({
+                where: {
+                    [Op.and]: [
+                        { email: req.body.email },
+                        { deletedAt: null}
+                    ]
+                }
+            })
+
+            if (existe) {
+                return next(errors.UsuarioAlreadyExistsError)
+            }
 
             const user = await models.usuario.create(req.body)
 
