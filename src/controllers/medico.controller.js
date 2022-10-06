@@ -38,6 +38,8 @@ module.exports = {
 
             if (!medico) return next(errors.MedicoInexistente)
             console.log(req.route)
+            console.log(req.originalUrl)
+            console.log(req.baseUrl)
 
             res.json({
                 success: true,
