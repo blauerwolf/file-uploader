@@ -482,6 +482,66 @@ module.exports = {
                     perfilId: 4,
                 }
             }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 48
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/subirArchivo",
+                    accion: "subirArchivo",
+                    perfilId: 1,
+                }
+            }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 49
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/subirArchivo",
+                    accion: "subirArchivo",
+                    perfilId: 2,
+                }
+            }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 50
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/subirArchivo",
+                    accion: "subirArchivo",
+                    perfilId: 3,
+                }
+            }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 51
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/descargarArchivo",
+                    accion: "descargarArchivo",
+                    perfilId: 1,
+                }
+            }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 52
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/descargarArchivo",
+                    accion: "descargarArchivo",
+                    perfilId: 2,
+                }
+            }),
+            models.permiso.findOrCreate({
+                where: {
+                    id: 53
+                },
+                defaults: {
+                    endpoint: "/api/usuarios/descargarArchivo",
+                    accion: "descargarArchivo",
+                    perfilId: 3,
+                }
+            }),
         ])
     },
 }

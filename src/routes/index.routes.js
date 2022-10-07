@@ -9,7 +9,7 @@ const decodeJWT = require('../middlewares/decodeJWT')
 
 const rutas_init = () => {
     const router = Router()
-    router.use('/pacientes', pacienteRoutes)
+    router.use('/pacientes', decodeJWT, pacienteRoutes)
     router.use('/medicos', decodeJWT, medicoRoutes)
     router.use('/tratamientos', decodeJWT, tratamientoRoutes)
     router.use('/usuarios', decodeJWT, usuarioRoutes)

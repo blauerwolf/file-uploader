@@ -152,5 +152,69 @@ module.exports = {
         } catch (err) {
             return next(err)
         }
-    } 
+    },
+    subirArchivo: async (req, res, next) => {
+        try {
+            const usuario = await models.usuario.findOne({
+                where: {
+                    id: req.body.usuarioId
+                }
+            })
+
+            console.log("holis")
+
+            if (!usuario) return next(errors.UsuarioInexistente)
+
+            const ar = await models.archivo_usuario.findOne({
+                where: {
+                    usuarioId: req.body.usuarioId,
+                    nombre: req.body.nombre
+                }
+            })
+
+            if (!ar) {
+                const archivo = await models.archivo_usuario.create({
+                    nombre: req.body.nombre,
+                    file: req.file ? req.file.filename : null, 
+                    original_name: req.file ? req.file.originalname : null,
+                    usuarioId: req.body.usuarioId
+                })
+            }
+
+            res.status(201).json({
+                success: true,
+                data: {
+                    message: "Archivo cargado."
+                }
+            })
+
+        } catch (err) {
+            return next(err)
+        }
+    },
+    descargarArchivo: async (req, res, next) => {
+        try {
+            const usuario = await models.usuario.findOne({
+                where: {
+                    id: req.body.usuarioId
+                }
+            })
+
+            if (!usuario) return next(errors.UsuarioInexistente)
+
+            const archivo = await models.archivo_usuario.findOne({
+                where: {
+                    usuarioId: req.body.usuarioId,
+                    nombre: req.body.nombre,
+                }
+            })
+
+            if (!archivo) return next(errors.ArchivoInexistente)
+
+            res.download('uploads/archivos-usuarios/' + archivo.file, archivo.original_name)
+
+        } catch (err) {
+            return next(err)
+        }
+    },
 }

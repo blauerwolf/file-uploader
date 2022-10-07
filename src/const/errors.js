@@ -74,4 +74,9 @@ module.exports = {
         message: 'No autorizado.',
         response: 403
     },
+    'ArchivoInexistente': {
+        code: 8000,
+        message: 'Archivo Inexistente.',
+        response: 404
+    },
 }
