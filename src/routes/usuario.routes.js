@@ -6,7 +6,6 @@ const authorize = require('../middlewares/authorize')
 
 var multer = require('multer')
 const globalConstants = require('../const/globalConstants')
-const { Router } = require('express')
 
 var upload = multer({
     dest: 'uploads/archivos-usuarios/',
@@ -18,7 +17,7 @@ router.get('/:idUsuario', authorize, usuarioController.listarInfo)
 router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioController.crear)
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
-router.post('/subirArchivo', authorize, upload.single('jpg'), usuarioController.subirArchivo)
+router.post('/subirArchivo', authorize, upload.single('jpg'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.get('/descargarArchivo', authorize, usuarioController.descargarArchivo)
 
 module.exports = router

@@ -28,7 +28,8 @@ module.exports = {
         try {
             const usuario = await models.usuario.findOne({
                 include: [{
-                    model:models.perfil
+                    model: models.perfil,
+                    model: models.archivo_usuario,
                 }],
                 where: {
                     id: req.params.idUsuario
@@ -160,8 +161,6 @@ module.exports = {
                     id: req.body.usuarioId
                 }
             })
-
-            console.log("holis")
 
             if (!usuario) return next(errors.UsuarioInexistente)
 

@@ -1,4 +1,5 @@
 const errors = require('../const/errors')
+const multer = require("multer");
 
 module.exports = function (err, req, res, next) {
     let response = {
@@ -19,6 +20,7 @@ module.exports = function (err, req, res, next) {
         response.error.code = errors[errorKey].code
         response.error.message = errors[errorKey].message
     }
+
 
     if (err.message === 'Not Found') {
         err.response = 404
@@ -64,7 +66,18 @@ module.exports = function (err, req, res, next) {
         err.response = 400
     }
 
+    
+    if (err.name === 'MulterError') {
+        err.response = 400
+        response.error.code = 400
+        if (err.message === 'Unexpected field') {
+            response.error.message = 'Campo jpg con el archivo inexistente.'
+        } else {
+            response.error.message = err.message
+        }
+    }
 
     console.log('MENSAJE DEL ERROR: ' + err.message)
+    console.log(err)
     res.status(err.response).json(response)
 }

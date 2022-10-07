@@ -487,7 +487,7 @@ module.exports = {
                     id: 48
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/subirArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "subirArchivo",
                     perfilId: 1,
                 }
@@ -497,7 +497,7 @@ module.exports = {
                     id: 49
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/subirArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "subirArchivo",
                     perfilId: 2,
                 }
@@ -507,7 +507,7 @@ module.exports = {
                     id: 50
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/subirArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "subirArchivo",
                     perfilId: 3,
                 }
@@ -517,7 +517,7 @@ module.exports = {
                     id: 51
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/descargarArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "descargarArchivo",
                     perfilId: 1,
                 }
@@ -527,7 +527,7 @@ module.exports = {
                     id: 52
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/descargarArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "descargarArchivo",
                     perfilId: 2,
                 }
@@ -537,7 +537,7 @@ module.exports = {
                     id: 53
                 },
                 defaults: {
-                    endpoint: "/api/usuarios/descargarArchivo",
+                    endpoint: "/api/usuarios",
                     accion: "descargarArchivo",
                     perfilId: 3,
                 }

@@ -5,7 +5,7 @@ let crearUsuario = Joi.object({
     apellido: Joi.string().required(),
     email: Joi.string().email().required(),
     perfilId: Joi.number().required(),
-    password: Joi.string().required().default(null),
+    password: Joi.string().min(6).required(),
 })
 
 // Pido un mínimo de 1 campo a actualizar
@@ -14,10 +14,16 @@ let actualizarUsuario = Joi.object({
     apellido: Joi.string().optional(),
     email: Joi.string().email().optional(),
     perfilId: Joi.number().optional(),
-    password: Joi.string().optional(),
+    password: Joi.string().min(6).optional(),
 }).min(1)
+
+let subirArchivo = Joi.object({
+    usuarioId: Joi.number().required(),
+    nombre: Joi.string().required(),
+})
 
 module.exports = {
     crearUsuario,
     actualizarUsuario,
+    subirArchivo,
 }

@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Usuario.associate = models => {
         Usuario.belongsTo(models.perfil)
+        Usuario.hasMany(models.archivo_usuario)
     }
 
     return Usuario
