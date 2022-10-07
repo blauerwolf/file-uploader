@@ -79,4 +79,9 @@ module.exports = {
         message: 'Archivo Inexistente.',
         response: 404
     },
+    'AccionNoPermitida': {
+        code: 9000,
+        message: 'Acción no permitida.',
+        response: 409
+    },
 }

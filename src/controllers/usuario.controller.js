@@ -126,6 +126,11 @@ module.exports = {
     },
     borrar: async (req, res, next) => {
         try {
+
+            if (res.locals.usuario.dataValues.id === req.params.idUsuario) {
+                return next(errors.AccionNoPermitida)
+            }
+
             const existe = await models.usuario.findOne({
                 where: { id: req.params.idUsuario }
             })

@@ -10,5 +10,7 @@ router.get('/', authorize, tratamientoController.listar)
 router.get('/:idTratamiento', authorize, tratamientoController.listarInfo)
 router.post('/', authorize, validate(tratamientoScheme.crearTratamiento), tratamientoController.crear)
 router.put('/:idTratamiento', authorize, validate(tratamientoScheme.actualizarTratamiento), tratamientoController.actualizar)
+router.delete('/:idTratamiento', authorize, tratamientoController.borrar)
+
 
 module.exports = router
