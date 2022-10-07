@@ -1,16 +1,15 @@
 const models = require('../database/models/index')
 const { NOW, fn, Op } = require('sequelize')
+const errors = require('../const/errors')
 
-module.exports = async function (endpoint, accion, req, res, next) {
-
-    try {
-        res.locals.usuario
-        const permiso = await models.permiso.findAll({
+module.exports = async function (req, res, next) {
+    try {        
+        const permiso = await models.permiso.findOne({
             where: {
                 [Op.and]: [
-                    { perfilId: res.local.usuario.perfilId },
-                    { endpoint: endpoint },
-                    { accion: accion },
+                    { perfilId: res.locals.usuario.dataValues.perfilId },
+                    { endpoint: req.baseUrl },
+                    { accion: req.route.stack[1].name },
                     { deletedAt: null }
                 ]
             }

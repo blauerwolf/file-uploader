@@ -31,7 +31,7 @@ module.exports = {
             }),
             models.usuario.findOrCreate({
                 where: {
-                    id: "2"
+                    id: "3"
                 },
                 defaults: {
                     nombre: "Dr.",
@@ -39,7 +39,18 @@ module.exports = {
                     email: "email.de.mentiritas@email.com",
                     perfilId: 3,
                 }
-            })
+            }),
+            models.usuario.findOrCreate({
+                where: {
+                    id: "4"
+                },
+                defaults: {
+                    nombre: "Dua",
+                    apellido: "Lipa",
+                    email: "dua.lipa@email.com",
+                    perfilId: 4,
+                }
+            }),
         ])
     },
 };

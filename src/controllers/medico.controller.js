@@ -37,9 +37,11 @@ module.exports = {
             })
 
             if (!medico) return next(errors.MedicoInexistente)
-            console.log(req.route)
-            console.log(req.originalUrl)
-            console.log(req.baseUrl)
+            //console.log(req.route)
+            //console.log(req.originalUrl)
+            //console.log(req.baseUrl)
+            //console.log(req.route.stack[0].name)
+            //console.log(req.route.stack[0])
 
             res.json({
                 success: true,

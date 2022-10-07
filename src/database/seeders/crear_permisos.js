@@ -17,7 +17,7 @@ module.exports = {
                     id: 1
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "listar",
                     perfilId: 1,
                 }
@@ -27,7 +27,7 @@ module.exports = {
                     id: 2
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "listarInfo",
                     perfilId: 1,
                 }
@@ -37,7 +37,7 @@ module.exports = {
                     id: 3
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "crear",
                     perfilId: 1,
                 }
@@ -47,7 +47,7 @@ module.exports = {
                     id: 4
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "actualizar",
                     perfilId: 1,
                 }
@@ -57,7 +57,7 @@ module.exports = {
                     id: 5
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "borrar",
                     perfilId: 1,
                 }
@@ -67,7 +67,7 @@ module.exports = {
                     id: 6
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listar",
                     perfilId: 1,
                 }
@@ -77,7 +77,7 @@ module.exports = {
                     id: 7
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listarInfo",
                     perfilId: 1,
                 }
@@ -87,7 +87,7 @@ module.exports = {
                     id: 8
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "crear",
                     perfilId: 1,
                 }
@@ -97,7 +97,7 @@ module.exports = {
                     id: 9
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "actualizar",
                     perfilId: 1,
                 }
@@ -107,7 +107,7 @@ module.exports = {
                     id: 10
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "borrar",
                     perfilId: 1,
                 }
@@ -117,7 +117,7 @@ module.exports = {
                     id: 11
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listar",
                     perfilId: 1,
                 }
@@ -127,7 +127,7 @@ module.exports = {
                     id: 12
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listarInfo",
                     perfilId: 1,
                 }
@@ -137,7 +137,7 @@ module.exports = {
                     id: 13
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "crear",
                     perfilId: 1,
                 }
@@ -147,7 +147,7 @@ module.exports = {
                     id: 14
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "actualizar",
                     perfilId: 1,
                 }
@@ -157,7 +157,7 @@ module.exports = {
                     id: 15
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "borrar",
                     perfilId: 1,
                 }
@@ -167,7 +167,7 @@ module.exports = {
                     id: 16
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "listar",
                     perfilId: 1,
                 }
@@ -177,7 +177,7 @@ module.exports = {
                     id: 17
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "listarInfo",
                     perfilId: 1,
                 }
@@ -187,7 +187,7 @@ module.exports = {
                     id: 18
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "crear",
                     perfilId: 1,
                 }
@@ -197,7 +197,7 @@ module.exports = {
                     id: 19
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "actualizar",
                     perfilId: 1,
                 }
@@ -207,7 +207,7 @@ module.exports = {
                     id: 20
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "borrar",
                     perfilId: 1,
                 }
@@ -217,7 +217,7 @@ module.exports = {
                     id: 21
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "listar",
                     perfilId: 2,
                 }
@@ -227,7 +227,7 @@ module.exports = {
                     id: 22
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "listarInfo",
                     perfilId: 2,
                 }
@@ -237,7 +237,7 @@ module.exports = {
                     id: 23
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "crear",
                     perfilId: 2,
                 }
@@ -247,7 +247,7 @@ module.exports = {
                     id: 24
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "actualizar",
                     perfilId: 2,
                 }
@@ -257,7 +257,7 @@ module.exports = {
                     id: 25
                 },
                 defaults: {
-                    endpoint: "usuarios",
+                    endpoint: "/api/usuarios",
                     accion: "borrar",
                     perfilId: 2,
                 }
@@ -267,7 +267,7 @@ module.exports = {
                     id: 26
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listar",
                     perfilId: 2,
                 }
@@ -277,7 +277,7 @@ module.exports = {
                     id: 27
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listarInfo",
                     perfilId: 2,
                 }
@@ -287,7 +287,7 @@ module.exports = {
                     id: 28
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "crear",
                     perfilId: 2,
                 }
@@ -297,7 +297,7 @@ module.exports = {
                     id: 29
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "actualizar",
                     perfilId: 2,
                 }
@@ -307,7 +307,7 @@ module.exports = {
                     id: 30
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "borrar",
                     perfilId: 2,
                 }
@@ -317,7 +317,7 @@ module.exports = {
                     id: 31
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listar",
                     perfilId: 2,
                 }
@@ -327,7 +327,7 @@ module.exports = {
                     id: 32
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listarInfo",
                     perfilId: 2,
                 }
@@ -337,7 +337,7 @@ module.exports = {
                     id: 33
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "crear",
                     perfilId: 2,
                 }
@@ -347,7 +347,7 @@ module.exports = {
                     id: 34
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "actualizar",
                     perfilId: 2,
                 }
@@ -357,7 +357,7 @@ module.exports = {
                     id: 35
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "borrar",
                     perfilId: 2,
                 }
@@ -367,7 +367,7 @@ module.exports = {
                     id: 36
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listar",
                     perfilId: 3,
                 }
@@ -377,7 +377,7 @@ module.exports = {
                     id: 37
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "listarInfo",
                     perfilId: 3,
                 }
@@ -387,7 +387,7 @@ module.exports = {
                     id: 38
                 },
                 defaults: {
-                    endpoint: "medicos",
+                    endpoint: "/api/medicos",
                     accion: "actualizar",
                     perfilId: 3,
                 }
@@ -397,7 +397,7 @@ module.exports = {
                     id: 39
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listar",
                     perfilId: 3,
                 }
@@ -407,7 +407,7 @@ module.exports = {
                     id: 40
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listarInfo",
                     perfilId: 3,
                 }
@@ -417,7 +417,7 @@ module.exports = {
                     id: 41
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "listar",
                     perfilId: 3,
                 }
@@ -427,7 +427,7 @@ module.exports = {
                     id: 42
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "listarInfo",
                     perfilId: 3,
                 }
@@ -437,7 +437,7 @@ module.exports = {
                     id: 43
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "crear",
                     perfilId: 3,
                 }
@@ -447,7 +447,7 @@ module.exports = {
                     id: 44
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "actualizar",
                     perfilId: 3,
                 }
@@ -457,7 +457,7 @@ module.exports = {
                     id: 45
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "borrar",
                     perfilId: 3,
                 }
@@ -467,7 +467,7 @@ module.exports = {
                     id: 46
                 },
                 defaults: {
-                    endpoint: "pacientes",
+                    endpoint: "/api/pacientes",
                     accion: "listarInfo",
                     perfilId: 4,
                 }
@@ -477,7 +477,7 @@ module.exports = {
                     id: 47
                 },
                 defaults: {
-                    endpoint: "tratamientos",
+                    endpoint: "/api/tratamientos",
                     accion: "listarInfo",
                     perfilId: 4,
                 }
