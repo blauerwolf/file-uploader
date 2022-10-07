@@ -15,7 +15,6 @@ module.exports = {
             })
 
             if (medicos.length == 0) return next(errors.SinResultadosError)
-            console.log(req.route)
 
             res.json({
                 sucess: true,
@@ -37,11 +36,6 @@ module.exports = {
             })
 
             if (!medico) return next(errors.MedicoInexistente)
-            //console.log(req.route)
-            //console.log(req.originalUrl)
-            //console.log(req.baseUrl)
-            //console.log(req.route.stack[0].name)
-            //console.log(req.route.stack[0])
 
             res.json({
                 success: true,

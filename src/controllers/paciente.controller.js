@@ -7,6 +7,8 @@ module.exports = {
         try {
             const pacientes = await models.paciente.findAll()
 
+            if (pacientes.length == 0) return next(errors.SinResultadosError)
+
             res.json({
                 success: true,
                 data: {
