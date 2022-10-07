@@ -22,8 +22,14 @@ let subirArchivo = Joi.object({
     nombre: Joi.string().required(),
 })
 
+let descargarArchivo = Joi.object({
+    usuarioId: Joi.number().required(),
+    nombre: Joi.string().required(),
+})
+
 module.exports = {
     crearUsuario,
     actualizarUsuario,
     subirArchivo,
+    descargarArchivo,
 }
