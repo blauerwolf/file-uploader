@@ -24,7 +24,7 @@ La API cuenta con los sieguientes endpoints:
 > medicos  
 > pacientes  
 > tratamientos  
-> auth  
+> auth
 
 La API devuelve maneja los errores en cada caso, devolviendo la respuesta HTTP correspondiente:
 - 200 OK
@@ -34,5 +34,18 @@ La API devuelve maneja los errores en cada caso, devolviendo la respuesta HTTP c
 - 403 No autorizado
 - 404 Elemento no encontrado
 - 409 Imposibiliad de crear/eliminar registro
+
+### Periles
+Existen 4 perfiles distintos:
+
+- Super Admmin
+- Operador de Sistema
+- Médico
+- Paciente
+
+No todos los perfiles pueden consumir todos los endpoints. Para ello se utiliza un middleware que consulta la BD para determinar si está autorizado o no un usuario.
+
+
+
 
 
