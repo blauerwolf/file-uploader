@@ -1,3 +1,4 @@
 node_modules
 .env
 postgres_ct/postgres_data/*
+uploads/*
