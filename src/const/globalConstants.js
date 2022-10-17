@@ -6,5 +6,6 @@ module.exports = {
     DB_USERNAME: process.env.DB_USERNAME,
     DB_PASSWORD: process.env.DB_PASSWORD,
     MAX_FILE_SIZE: 1024 * 1024 * 100,
-    JWT_SECRET: process.env.JWT_SECRET
+    JWT_SECRET: process.env.JWT_SECRET,
+    UPLOADS: '/var/www/html/cdn/imagenes/',
 }

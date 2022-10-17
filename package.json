@@ -1,7 +1,7 @@
 {
-  "name": "trabajo_final",
+  "name": "file_uploader_cdn",
   "version": "1.0.0",
-  "description": "\"Desarrollo de servicios web con Node.js - tf\"",
+  "description": "Simple file uploader API",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blauerwolf/dev-web-srv-nodejs-tp2.git"
+    "url": "git+https://github.com/blauerwolf/file-uploader.git"
   },
   "author": "Ernesto Ardenghi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blauerwolf/dev-web-srv-nodejs-tp2/issues"
+    "url": "https://github.com/blauerwolf/file-uploader/issues"
   },
-  "homepage": "https://github.com/blauerwolf/dev-web-srv-nodejs-tp2#readme",
+  "homepage": "https://github.com/blauerwolf/file-uploader#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.2",
