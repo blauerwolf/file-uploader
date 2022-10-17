@@ -12,9 +12,9 @@ module.exports = {
                     id: "1"
                 },
                 defaults: {
-                    nombre: "John",
-                    apellido: "Doe",
-                    email: "john.doe@email.com",
+                    nombre: "Darth",
+                    apellido: "Vader",
+                    email: "darth.vader@email.com",
                     perfilId: 1,
                 }
             }),
@@ -38,17 +38,6 @@ module.exports = {
                     apellido: "Gomez",
                     email: "email.de.mentiritas@email.com",
                     perfilId: 3,
-                }
-            }),
-            models.usuario.findOrCreate({
-                where: {
-                    id: "4"
-                },
-                defaults: {
-                    nombre: "Dua",
-                    apellido: "Lipa",
-                    email: "dua.lipa@email.com",
-                    perfilId: 4,
                 }
             }),
         ])

@@ -18,12 +18,10 @@ let actualizarUsuario = Joi.object({
 }).min(1)
 
 let subirArchivo = Joi.object({
-    usuarioId: Joi.number().required(),
     nombre: Joi.string().required(),
 })
 
 let descargarArchivo = Joi.object({
-    usuarioId: Joi.number().required(),
     nombre: Joi.string().required(),
 })
 

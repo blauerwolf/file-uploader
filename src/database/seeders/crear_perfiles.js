@@ -28,15 +28,7 @@ module.exports = {
                     id: 3
                 },
                 defaults: {
-                    descripcion: "Médico"
-                }
-            }),
-            models.perfil.findOrCreate({
-                where: {
-                    id: 4
-                },
-                defaults: {
-                    descripcion: "Paciente"
+                    descripcion: "Consulta"
                 }
             }),
         ])

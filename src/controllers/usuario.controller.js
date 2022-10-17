@@ -163,7 +163,7 @@ module.exports = {
         try {
             const usuario = await models.usuario.findOne({
                 where: {
-                    id: req.body.usuarioId
+                    id: res.locals.usuario.dataValues.id
                 }
             })
 
@@ -171,7 +171,7 @@ module.exports = {
 
             const ar = await models.archivo_usuario.findOne({
                 where: {
-                    usuarioId: req.body.usuarioId,
+                    usuarioId: res.locals.usuario.dataValues.id,
                     nombre: req.body.nombre
                 }
             })
@@ -181,7 +181,7 @@ module.exports = {
                     nombre: req.body.nombre,
                     file: req.file ? req.file.filename : null, 
                     original_name: req.file ? req.file.originalname : null,
-                    usuarioId: req.body.usuarioId
+                    usuarioId: res.locals.usuario.dataValues.id
                 })
             }
 
@@ -200,7 +200,7 @@ module.exports = {
         try {
             const usuario = await models.usuario.findOne({
                 where: {
-                    id: req.body.usuarioId
+                    id: res.locals.usuario.dataValues.id
                 }
             })
 
@@ -208,7 +208,7 @@ module.exports = {
 
             const archivo = await models.archivo_usuario.findOne({
                 where: {
-                    usuarioId: req.body.usuarioId,
+                    usuarioId: res.locals.usuario.dataValues.id,
                     nombre: req.body.nombre,
                 }
             })
