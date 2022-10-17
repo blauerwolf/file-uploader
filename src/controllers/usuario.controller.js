@@ -2,6 +2,9 @@ const models = require('../database/models/index')
 const errors = require('../const/errors')
 const { NOW, fn, Op } = require('sequelize')
 
+const crypto = require('crypto');
+const fs = require('fs');
+
 module.exports = {
     listar: async (req, res, next) => {
         try{
@@ -161,6 +164,8 @@ module.exports = {
     },
     subirArchivo: async (req, res, next) => {
         try {
+            console.log(req.file)
+
             const usuario = await models.usuario.findOne({
                 where: {
                     id: res.locals.usuario.dataValues.id
@@ -176,12 +181,20 @@ module.exports = {
                 }
             })
 
+            const fileBuffer = fs.readFileSync(req.file.path)
+            const hashSum = crypto.createHash('sha256')
+            hashSum.update(fileBuffer)
+            const sha256 = hashSum.digest('hex')
+            //const base64 = hashSum.digest('base64')
+
             if (!ar) {
                 const archivo = await models.archivo_usuario.create({
                     nombre: req.body.nombre,
                     file: req.file ? req.file.filename : null, 
                     original_name: req.file ? req.file.originalname : null,
-                    usuarioId: res.locals.usuario.dataValues.id
+                    usuarioId: res.locals.usuario.dataValues.id,
+                    size: req.file.size,
+                    sha256: sha256,
                 })
             }
 

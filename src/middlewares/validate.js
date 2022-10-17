@@ -8,6 +8,7 @@ module.exports = (scheme) => {
             next(result.error)
 
         } else {
+            console.log("next")
             next()
         }
     }

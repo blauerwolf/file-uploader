@@ -20,6 +20,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        size: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        sha256: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         createdAt: {
             type: DataTypes.DATE,
             field: 'created_at',
