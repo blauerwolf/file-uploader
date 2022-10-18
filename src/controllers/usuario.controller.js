@@ -175,7 +175,7 @@ module.exports = {
             const ar = await models.archivo_usuario.findOne({
                 where: {
                     usuarioId: res.locals.usuario.dataValues.id,
-                    nombre: req.body.nombre
+                    original_name: req.file.originalname
                 }
             })
 

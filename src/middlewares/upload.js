@@ -15,7 +15,24 @@ module.exports = (req, res, next) => {
     }
 }
 */
+module.exports = {
+    fileExists: async (usuarioId, filename) => {
+        const ar = await models.archivo_usuario.findOne({
+            where: {
+                usuarioId: usuarioId,
+                original_name: filename,
+            }
+        })
 
+        if (!ar) {
+            return false
+        } else {
+            return true
+        }
+    },
+}
+
+/*
 module.exports = (usuarioId, file) => {
     return (req, res, next) => {
         let result = scheme.validate(req.body)
@@ -28,4 +45,5 @@ module.exports = (usuarioId, file) => {
         }
     }
 }
+*/
 

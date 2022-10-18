@@ -45,6 +45,12 @@ module.exports = function (err, req, res, next) {
         response.error.message = 'Formato no permitido.'
     }
 
+    if (err.message === 'El archivo ya se encuentra en el repositorio.') {
+        err.response = 409
+        response.error.code = 409
+        response.error.message = 'El archivo ya se encuentra en el repositorio.'
+    }
+
     if (err.name === 'SequelizeValidationError') {
         err.response = 400
         let validationError = err.errors[0]

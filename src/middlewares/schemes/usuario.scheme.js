@@ -18,7 +18,7 @@ let actualizarUsuario = Joi.object({
 }).min(1)
 
 let subirArchivo = Joi.object({
-    nombre: Joi.string().required(),
+    codigo: Joi.string().optional(),
 })
 
 let descargarArchivo = Joi.object({
