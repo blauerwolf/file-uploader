@@ -28,7 +28,11 @@ const multerStorage = multer.diskStorage({
         console.log("body")
         console.log(req.body.codigo)
         //cb(null, `${file.filename}-${Date.now()}.${ext}`)
-        cb(null, `${file.originalname}`)
+        if (!req.body.codigo) {
+            cb(null, `${Date.now()}-${file.originalname}`)
+        } else {
+            cb(null, `${req.body.codigo}-${file.originalname}`)
+        }
     }
 })
 
