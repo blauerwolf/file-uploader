@@ -4,11 +4,9 @@ const validate = require('../middlewares/validate')
 const usuarioScheme = require('../middlewares/schemes/usuario.scheme')
 const authorize = require('../middlewares/authorize')
 const globalConstants = require('../const/globalConstants')
-
-const subir = require('../middlewares/upload')
-
-
+const errors = require('../const/errors')
 var multer = require('multer')
+
 /*
 
 var upload = multer({
@@ -34,10 +32,11 @@ const multerFilter = (req, file, cb) => {
         file.mimetype.split("/")[1] === 'jpeg' ||
         file.mimetype.split("/")[1] === 'png'    
     ) {
+        console.log(file.originalname)
+        console.log(req.res.locals.usuario.dataValues.id)
         cb(null, true)
-        console.log(file)
     } else {
-        return cb(new Error("No es un archivo de imagen!!"), false)
+        return cb(new Error("Formato no permitido."), false)
     }
 }
 
@@ -52,7 +51,7 @@ router.get('/:idUsuario', authorize, usuarioController.listarInfo)
 router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioController.crear)
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
-router.post('/subirArchivo', authorize, subir, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
+router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.post('/descargarArchivo', authorize, validate(usuarioScheme.descargarArchivo), usuarioController.descargarArchivo)
 
 module.exports = router

@@ -39,6 +39,12 @@ module.exports = function (err, req, res, next) {
         Response.error.code = 403
     }
 
+    if (err.message === 'Formato no permitido.') {
+        err.response = 409
+        response.error.code = 409
+        response.error.message = 'Formato no permitido.'
+    }
+
     if (err.name === 'SequelizeValidationError') {
         err.response = 400
         let validationError = err.errors[0]

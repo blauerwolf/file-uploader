@@ -164,8 +164,6 @@ module.exports = {
     },
     subirArchivo: async (req, res, next) => {
         try {
-            console.log(req.file)
-
             const usuario = await models.usuario.findOne({
                 where: {
                     id: res.locals.usuario.dataValues.id
