@@ -10,23 +10,12 @@ const validarArchivo = require('../middlewares/upload')
 
 var multer = require('multer')
 
-/*
-
-var upload = multer({
-    dest: 'uploads/archivos-usuarios/',
-    limits: { fileSize: globalConstants.MAX_FILE_SIZE }
-})
-*/
-
-
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, globalConstants.UPLOADS)
     },
     filename: (req, file, cb) => {
         //const ext = file.mimetype.split("/")[1]
-        console.log("body")
-        console.log(req.body.codigo)
         //cb(null, `${file.filename}-${Date.now()}.${ext}`)
         if (!req.body.codigo) {
             cb(null, `${Date.now()}-${file.originalname}`)
@@ -69,7 +58,7 @@ router.get('/:idUsuario', authorize, usuarioController.listarInfo)
 router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioController.crear)
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
-router.post('/subirArchivo', authorize, validate(usuarioScheme.subirArchivo), upload.single('img'), usuarioController.subirArchivo)
+router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.post('/descargarArchivo', authorize, validate(usuarioScheme.descargarArchivo), usuarioController.descargarArchivo)
 
 module.exports = router
