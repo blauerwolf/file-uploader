@@ -6,7 +6,6 @@ const { NOW, fn, Op } = require('sequelize')
 const crypto = require('crypto');
 const fs = require('fs');
 
-
 module.exports = {
     listar: async (req, res, next) => {
         try{

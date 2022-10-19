@@ -61,7 +61,6 @@ router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioControl
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
 router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
-//router.post('/subirArchivo', authorize, validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.post('/descargarArchivo', authorize, validate(usuarioScheme.descargarArchivo), usuarioController.descargarArchivo)
 
 module.exports = router
