@@ -31,7 +31,7 @@ const multerFilter = (req, file, cb) => {
         file.mimetype.split("/")[1] === 'jpeg' ||
         file.mimetype.split("/")[1] === 'png'    
     ) {       
-
+        /*
         (async() => {
             const existeArchivo = await validarArchivo.fileExists(req.res.locals.usuario.dataValues.id, file.originalname)
 
@@ -41,6 +41,8 @@ const multerFilter = (req, file, cb) => {
                 cb (new Error('El archivo ya se encuentra en el repositorio.'), false)
             }
         })()
+        */
+        cb(null, true)
 
     } else {
         return cb(new Error("Formato no permitido."), false)
@@ -59,6 +61,7 @@ router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioControl
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
 router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
+//router.post('/subirArchivo', authorize, validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.post('/descargarArchivo', authorize, validate(usuarioScheme.descargarArchivo), usuarioController.descargarArchivo)
 
 module.exports = router

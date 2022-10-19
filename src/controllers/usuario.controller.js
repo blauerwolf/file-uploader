@@ -1,9 +1,11 @@
 const models = require('../database/models/index')
 const errors = require('../const/errors')
+const globalConstants = require('../const/globalConstants')
 const { NOW, fn, Op } = require('sequelize')
 
 const crypto = require('crypto');
 const fs = require('fs');
+
 
 module.exports = {
     listar: async (req, res, next) => {
@@ -172,7 +174,6 @@ module.exports = {
 
             if (!usuario) return next(errors.UsuarioInexistente)
 
-
             const ar = await models.archivo_usuario.findOne({
                 where: {
                     usuarioId: res.locals.usuario.dataValues.id,
@@ -187,6 +188,7 @@ module.exports = {
             //const base64 = hashSum.digest('base64')
 
             if (!ar) {
+
                 const archivo = await models.archivo_usuario.create({
                     //nombre: req.body.nombre,
                     file: req.file ? req.file.filename : null, 
