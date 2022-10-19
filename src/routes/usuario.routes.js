@@ -6,7 +6,6 @@ const usuarioController = require('../controllers/usuario.controller')
 const usuarioScheme = require('../middlewares/schemes/usuario.scheme')
 const validate = require('../middlewares/validate')
 const authorize = require('../middlewares/authorize')
-const validarArchivo = require('../middlewares/upload')
 
 var multer = require('multer')
 
@@ -60,7 +59,8 @@ router.get('/:idUsuario', authorize, usuarioController.listarInfo)
 router.post('/', authorize, validate(usuarioScheme.crearUsuario), usuarioController.crear)
 router.put('/:idUsuario', authorize, validate(usuarioScheme.actualizarUsuario), usuarioController.actualizar)
 router.delete('/:idUsuario', authorize, usuarioController.borrar)
-router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
+//router.post('/subirArchivo', authorize, upload.single('img'), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
+router.post('/subirArchivo', authorize, upload.array('img',5), validate(usuarioScheme.subirArchivo), usuarioController.subirArchivo)
 router.post('/descargarArchivo', authorize, validate(usuarioScheme.descargarArchivo), usuarioController.descargarArchivo)
 
 module.exports = router

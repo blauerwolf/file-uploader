@@ -173,35 +173,45 @@ module.exports = {
 
             if (!usuario) return next(errors.UsuarioInexistente)
 
-            const ar = await models.archivo_usuario.findOne({
-                where: {
-                    usuarioId: res.locals.usuario.dataValues.id,
-                    original_name: req.file.originalname
-                }
-            })
+            console.log(req.files.length)
+            for (const archivo of req.files) {
 
-            const fileBuffer = fs.readFileSync(req.file.path)
-            const hashSum = crypto.createHash('sha256')
-            hashSum.update(fileBuffer)
-            const sha256 = hashSum.digest('hex')
-            //const base64 = hashSum.digest('base64')
-
-            if (!ar) {
-
-                const archivo = await models.archivo_usuario.create({
-                    //nombre: req.body.nombre,
-                    file: req.file ? req.file.filename : null, 
-                    original_name: req.file ? req.file.originalname : null,
-                    usuarioId: res.locals.usuario.dataValues.id,
-                    size: req.file.size,
-                    sha256: sha256,
+                const ar = await models.archivo_usuario.findOne({
+                    where: {
+                        usuarioId: res.locals.usuario.dataValues.id,
+                        original_name: archivo.originalname
+                    }
                 })
+
+                const fileBuffer = fs.readFileSync(archivo.path)
+                const hashSum = crypto.createHash('sha256')
+                hashSum.update(fileBuffer)
+                const sha256 = hashSum.digest('hex')
+                //const base64 = hashSum.digest('base64')
+
+                if (!ar) {
+
+                    const archivoDB = await models.archivo_usuario.create({
+                        //nombre: req.body.nombre,
+                        file: archivo ? archivo.filename : null, 
+                        original_name: archivo.file ? archivo.originalname : null,
+                        usuarioId: res.locals.usuario.dataValues.id,
+                        size: archivo.size,
+                        sha256: sha256,
+                    })
+                }
             }
+
+            var mensaje = "Archivo cargado."
+            if (req.files.length > 1) {
+                mensaje = "Archivos cargados."
+            }
+
 
             res.status(201).json({
                 success: true,
                 data: {
-                    message: "Archivo cargado."
+                    message: mensaje
                 }
             })
 
