@@ -107,6 +107,7 @@ module.exports = {
                 apellido: req.body.apellido,
                 email: req.body.email,
                 perfilId: req.body.perfilId,
+                password: req.body.password,
             }, {
                 where: { id: req.params.idUsuario },
                 returning: true,

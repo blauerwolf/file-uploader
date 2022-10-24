@@ -83,13 +83,16 @@ module.exports = function (err, req, res, next) {
         err.response = 400
         response.error.code = 400
         if (err.message === 'Unexpected field') {
-            response.error.message = 'Campo jpg con el archivo inexistente.'
+            if (err.code === 'LIMIT_UNEXPECTED_FILE') {
+                response.error.message = 'Máximo de imagenes enviadas excedido.'
+            } else {
+                response.error.message = 'Campo jpg con el archivo inexistente.'
+            }
         } else {
             response.error.message = err.message
         }
     }
 
     console.log('MENSAJE DEL ERROR: ' + err.message)
-    console.log(err)
     res.status(err.response).json(response)
 }
