@@ -6,6 +6,7 @@ const usuarioController = require('../controllers/usuario.controller')
 const usuarioScheme = require('../middlewares/schemes/usuario.scheme')
 const validate = require('../middlewares/validate')
 const authorize = require('../middlewares/authorize')
+const sanitize = require('sanitize-filename')
 
 var multer = require('multer')
 
@@ -16,10 +17,13 @@ const multerStorage = multer.diskStorage({
     filename: (req, file, cb) => {
         //const ext = file.mimetype.split("/")[1]
         //cb(null, `${file.filename}-${Date.now()}.${ext}`)
+
+        var sanitizedFilename = sanitize(file.originalname).replace(/ /g,'_')
+
         if (!req.body.codigo) {
-            cb(null, `${Date.now()}-${file.originalname}`)
+            cb(null, `${Date.now()}-${sanitizedFilename}}`)
         } else {
-            cb(null, `${req.body.codigo}-${file.originalname}`)
+            cb(null, `${req.body.codigo}-${sanitizedFilename}`)
         }
     }
 })
