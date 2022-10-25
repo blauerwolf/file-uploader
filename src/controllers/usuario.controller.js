@@ -187,6 +187,8 @@ module.exports = {
 
             if (!usuario) return next(errors.UsuarioInexistente)
 
+            var subidos = []
+
             for (const archivo of req.files) {
 
                 const ar = await models.archivo_usuario.findOne({
@@ -201,6 +203,8 @@ module.exports = {
                 hashSum.update(fileBuffer)
                 const sha256 = hashSum.digest('hex')
                 //const base64 = hashSum.digest('base64')
+
+                subidos.push(archivo.filename)
 
                 if (!ar) {
 
@@ -224,7 +228,8 @@ module.exports = {
             res.status(201).json({
                 success: true,
                 data: {
-                    message: mensaje
+                    message: mensaje,
+                    archivos: subidos,
                 }
             })
 
