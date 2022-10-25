@@ -103,13 +103,13 @@ module.exports = {
                 return next(errors.AccionNoPermitida)
             }
 
-	    // Un usuario regular no puede cambiarse su propio perfil
-	    if (
-		req.body.perfilId !== undefined &&
-		res.locals.usuario.dataValues.id === req.params.idUsuario
-	    ) {
-		return next(errors.AccionNoPermitida)
-	    }
+            // Un usuario regular no puede cambiarse su propio perfil
+            if (
+                req.body.perfilId !== undefined &&
+                res.locals.usuario.dataValues.id === req.params.idUsuario
+            ) {
+                return next(errors.AccionNoPermitida)
+            }
 
             const existe = await models.usuario.findOne({
                 where: {
