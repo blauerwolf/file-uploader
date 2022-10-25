@@ -211,7 +211,7 @@ module.exports = {
                     const archivoDB = await models.archivo_usuario.create({
                         //nombre: req.body.nombre,
                         file: archivo ? archivo.filename : null, 
-                        original_name: archivo.file ? archivo.originalname : null,
+                        original_name: archivo.originalname ? archivo.originalname : null,
                         usuarioId: res.locals.usuario.dataValues.id,
                         size: archivo.size,
                         sha256: sha256,
