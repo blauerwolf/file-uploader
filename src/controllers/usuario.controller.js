@@ -94,6 +94,23 @@ module.exports = {
     },
     actualizar: async (req, res, next) => {
         try {
+
+	    // Solo el admin puede cambiar los parámetros de otros usuarios.
+            if (
+                res.locals.usuario.dataValues.id !== req.params.idUsuario &&
+                res.locals.usuario.dataValues.perfilId != 1
+            ) {
+                return next(errors.AccionNoPermitida)
+            }
+
+	    // Un usuario regular no puede cambiarse su propio perfil
+	    if (
+		req.body.perfilId !== undefined &&
+		res.locals.usuario.dataValues.id === req.params.idUsuario
+	    ) {
+		return next(errors.AccionNoPermitida)
+	    }
+
             const existe = await models.usuario.findOne({
                 where: {
                     id: req.params.idUsuario
@@ -114,8 +131,6 @@ module.exports = {
                 plain: true,
 
             })
-
-            console.log(usuario[1].dataValues)
 
             res.json({
                 success: true,
@@ -150,8 +165,6 @@ module.exports = {
                 plain: true,
             })
 
-            console.log(usuario[1].dataValues)
-
             res.json({
                 success: true,
                 data: {
@@ -174,7 +187,6 @@ module.exports = {
 
             if (!usuario) return next(errors.UsuarioInexistente)
 
-            console.log(req.files.length)
             for (const archivo of req.files) {
 
                 const ar = await models.archivo_usuario.findOne({
