@@ -95,7 +95,7 @@ module.exports = {
     actualizar: async (req, res, next) => {
         try {
 
-	    // Solo el admin puede cambiar los parámetros de otros usuarios.
+	        // Solo el admin puede cambiar los parámetros de otros usuarios.
             if (
                 res.locals.usuario.dataValues.id !== req.params.idUsuario &&
                 res.locals.usuario.dataValues.perfilId != 1
